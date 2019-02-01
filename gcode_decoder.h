@@ -14,7 +14,7 @@ struct location{
 //G01 is a linear interpolation(moves 1 axis at once)
 
 
-char * gcode_generation(Location *loc,char *gcodeloc);
+void gcode_generation(Location *loc,char *gcodeloc);
 
 Location *location_new(int x,int y,int z);
 
