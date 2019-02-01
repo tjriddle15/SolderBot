@@ -24,9 +24,15 @@ void location_free(Location * loc){
     free(loc);
 }
 
-char * gcode_generation(Location *loc){
-    char gcodeloc[75];
-    strcpy(gcodeloc, "G00 X%d Y%d Z%d F400\n",loc->x_loc,loc->y_loc,loc->z_loc);
+char * gcode_generation(Location *loc, char *gcodeloc){
+    char tempgloc[15];
+    strcpy(gcodeloc, "G00 X");
+    sprintf(tempgloc, "%d Y", loc->x_loc);
+    strcat(gcodeloc, tempgloc);
+    sprintf(tempgloc, "%d Z", loc->y_loc);
+    strcat(gcodeloc, tempgloc);
+    sprintf(tempgloc, "%d f400", loc->z_loc);
+    strcat(gcodeloc, tempgloc);
     return gcodeloc;
 }
 
