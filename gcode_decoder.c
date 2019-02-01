@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "gcode_decoder.h"
 
 
@@ -21,5 +22,11 @@ Location * location_new(int x,int y, int z)
 
 void location_free(Location * loc){
     free(loc);
+}
+
+char * gcode_generation(Location *loc){
+    char gcodeloc[75];
+    strcpy(gcodeloc, "G00 X%d Y%d Z%d F400\n",loc->x_loc,loc->y_loc,loc->z_loc);
+    return gcodeloc;
 }
 
