@@ -5,11 +5,14 @@
 int main()
 {
 
-    Location * loc = location_new(26,13,14);///dynamically allocates and constructs a location struct and returns a pointer to that struct
-    printf("X:%d,Y:%d,Z:%d\n",loc->x_loc,loc->y_loc,loc->z_loc);
+    Location * loc_current = location_new(999,0,0);///dynamically allocates and constructs a location struct and returns a pointer to that struct
+    Location * loc_future = location_new(26.0,13.0,14.0);
+    printf("Current_loc\nX:%.3f,Y:%.3f,Z:%.3f\n",loc_current->x_loc,loc_current->y_loc,loc_current->z_loc);
+    printf("Future_loc\nX:%.3f,Y:%.3f,Z:%.3f\n",loc_future->x_loc,loc_future->y_loc,loc_future->z_loc);
     char gcode1[75];
-    gcode_generation(loc,gcode1);
+    move_loc(loc_current,loc_future,gcode1);
     printf("%s\n",gcode1);
-    location_free(loc);
+    location_free(loc_current);
+    location_free(loc_future);
     return 0;
 }
